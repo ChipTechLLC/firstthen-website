@@ -73,6 +73,26 @@ p:last-child { margin-bottom: 0; }
 }
 .gold-bar.centered { margin-left: auto; margin-right: auto; }
 
+/* LOGO */
+.nav-logo {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 4px;
+  display: block;
+}
+
+.footer-logo {
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+  object-position: left center;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
 /* BUTTONS */
 .btn {
   display: inline-flex;
