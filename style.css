@@ -405,9 +405,12 @@ blockquote {
 .feature-card {
   background: var(--navy-mid);
   border-radius: 12px;
-  padding: 2rem 1.5rem;
+  padding: 1.5rem;
   border: 1px solid rgba(201,162,39,0.1);
   transition: border-color 0.2s, transform 0.2s;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
 }
 
 .feature-card:hover {
@@ -416,11 +419,13 @@ blockquote {
 }
 
 .feature-icon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 1.75rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
 }
 
-.feature-card h3 { color: var(--white); }
+.feature-body { display: flex; flex-direction: column; }
+.feature-card h3 { color: var(--white); margin-bottom: 0.35rem; }
 .feature-card p { font-size: 0.95rem; color: var(--silver); margin: 0; }
 
 /* SCREENSHOTS */
