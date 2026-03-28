@@ -607,7 +607,8 @@ blockquote {
 }
 .value-card:hover { border-color: rgba(201,162,39,0.35); }
 
-.value-icon { font-size: 1.5rem; flex-shrink: 0; }
+.value-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 0.1rem; }
+.value-body { display: flex; flex-direction: column; }
 .value-card h3 { font-size: 1rem; margin-bottom: 0.25rem; color: var(--white); }
 .value-card p { font-size: 0.9rem; color: var(--silver); margin: 0; }
 
@@ -666,6 +667,42 @@ blockquote {
 }
 
 .product-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+
+/* Mini First/Then board (product card preview) */
+.mini-board {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.mini-card {
+  background: var(--navy);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  text-align: center;
+  border: 1.5px solid rgba(201,162,39,0.2);
+  min-width: 60px;
+}
+
+.mini-first .mini-label { color: var(--gold); }
+.mini-then .mini-label { color: #6eb5ff; }
+
+.mini-label {
+  font-family: var(--font-heading);
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.25rem;
+}
+
+.mini-emoji { font-size: 1.25rem; }
+
+.mini-arrow {
+  font-size: 1.1rem;
+  color: var(--gold);
+  font-weight: 800;
+}
 
 .product-card h3 { font-size: 1.4rem; margin-bottom: 0.25rem; color: var(--white); }
 .product-tagline {
