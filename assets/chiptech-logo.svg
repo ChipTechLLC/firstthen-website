@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 445 122" role="img" aria-label="ChipTech LLC">
+  <title>ChipTech LLC</title>
+
+  <!-- ═══════════════════════════════
+       ICON MARK
+  ═══════════════════════════════ -->
+
+  <!-- White angular C-bracket
+       Top arm is strongly diagonal (going lower-left → upper-right)
+       Left bar is vertical
+       Bottom arm is near-horizontal with slight angle                   -->
+  <polygon fill="#FFFFFF"
+           points="8,44 50,12 63,25 23,56 21,88 65,88 61,102 8,102"/>
+
+  <!-- Gold vertical bar (the T stem, inside the C opening)
+       Slightly angled top face mirrors the C's diagonal                  -->
+  <polygon fill="#C9A227"
+           points="53,20 71,33 71,86 53,86"/>
+
+  <!-- Silver/gray parallelogram accent
+       Sits in the lower portion of the C opening                         -->
+  <polygon fill="#B4B8C5"
+           points="29,73 52,73 50,88 27,88"/>
+
+  <!-- White 5-pointed star
+       Positioned at the top of the icon, above the diagonal C arm
+       Center ≈ (40, 9), outer r=11, inner r=4.5                          -->
+  <polygon fill="#FFFFFF"
+           points="40,0 42,7 50,7 44,12 46,19 40,15 34,19 36,12 30,7 38,7"/>
+
+
+  <!-- ═══════════════════════════════
+       WORDMARK
+  ═══════════════════════════════ -->
+
+  <!-- "CHIP" — white, bold -->
+  <text x="98" y="80"
+        font-family="Montserrat,'Arial Black',Arial,sans-serif"
+        font-weight="800"
+        font-size="56"
+        fill="#FFFFFF">CHIP</text>
+
+  <!-- "TECH" — gold, bold -->
+  <text x="258" y="80"
+        font-family="Montserrat,'Arial Black',Arial,sans-serif"
+        font-weight="800"
+        font-size="56"
+        fill="#C9A227">TECH</text>
+
+  <!-- "LLC" flanked by gold rules -->
+  <line x1="98"  y1="96" x2="202" y2="96" stroke="#C9A227" stroke-width="1.5"/>
+  <text x="248" y="112"
+        font-family="Montserrat,Arial,sans-serif"
+        font-weight="700"
+        font-size="13"
+        fill="#C9A227"
+        text-anchor="middle"
+        letter-spacing="5">LLC</text>
+  <line x1="294" y1="96" x2="430" y2="96" stroke="#C9A227" stroke-width="1.5"/>
+
+</svg>
