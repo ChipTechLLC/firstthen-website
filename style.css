@@ -405,12 +405,9 @@ blockquote {
 .feature-card {
   background: var(--navy-mid);
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 1.75rem 1.5rem;
   border: 1px solid rgba(201,162,39,0.1);
   transition: border-color 0.2s, transform 0.2s;
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
 }
 
 .feature-card:hover {
@@ -419,9 +416,15 @@ blockquote {
 }
 
 .feature-icon {
-  font-size: 1.75rem;
-  flex-shrink: 0;
-  margin-top: 0.1rem;
+  width: 52px;
+  height: 52px;
+  background: rgba(201,162,39,0.08);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .feature-body { display: flex; flex-direction: column; }
@@ -605,14 +608,21 @@ blockquote {
   border: 1px solid rgba(201,162,39,0.12);
   border-radius: 10px;
   padding: 1.25rem 1.5rem;
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
   transition: border-color 0.2s;
 }
 .value-card:hover { border-color: rgba(201,162,39,0.35); }
 
-.value-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 0.1rem; }
+.value-icon {
+  width: 44px;
+  height: 44px;
+  background: rgba(201,162,39,0.08);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+}
 .value-body { display: flex; flex-direction: column; }
 .value-card h3 { font-size: 1rem; margin-bottom: 0.25rem; color: var(--white); }
 .value-card p { font-size: 0.9rem; color: var(--silver); margin: 0; }
