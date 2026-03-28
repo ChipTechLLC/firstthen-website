@@ -75,19 +75,20 @@ p:last-child { margin-bottom: 0; }
 
 /* LOGO */
 .nav-logo {
-  height: 42px;
+  height: 36px;
   width: auto;
   object-fit: contain;
   object-position: left center;
   display: block;
+  vertical-align: middle;
 }
 
 .footer-logo {
-  height: 52px;
+  height: 44px;
   width: auto;
+  max-width: 200px;
   object-fit: contain;
   object-position: left center;
-  border-radius: 4px;
   margin-bottom: 0.75rem;
   display: block;
 }
@@ -293,11 +294,11 @@ p:last-child { margin-bottom: 0; }
 
 /* Hero emblem (company homepage) */
 .hero-emblem {
-  width: 280px;
-  height: 280px;
+  width: 340px;
+  height: auto;
   object-fit: contain;
-  opacity: 0.92;
-  filter: drop-shadow(0 0 60px rgba(201,162,39,0.25));
+  opacity: 0.95;
+  filter: drop-shadow(0 0 80px rgba(201,162,39,0.2));
 }
 
 /* Hero board preview decoration */
