@@ -1,0 +1,12 @@
+{
+  "name": "chiptech-website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test test/*.test.mjs",
+    "dev": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "devDependencies": { "wrangler": "^4.131.2", "qrcode": "^1.5.4" }
+}

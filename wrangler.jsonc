@@ -1,0 +1,62 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "chiptech-website",
+  "main": "worker/index.mjs",
+  "compatibility_date": "2026-09-14",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "html_handling": "none",
+    "run_worker_first": [
+      "/api/*",
+      "/",
+      "/android-beta",
+      "/android-beta/"
+    ]
+  },
+  "vars": {
+    "BETA_OPEN": "false",
+    "GOOGLE_GROUP_EMAIL": "",
+    "TURNSTILE_SITE_KEY": "",
+    "BETA_ACCEPTING": "false"
+  },
+  "observability": {
+    "enabled": false
+  },
+  "account_id": "d084cd1fddf5223787eaf1011a3e78d2",
+  "d1_databases": [
+    {
+      "binding": "BETA_DB",
+      "database_name": "chiptech-beta-signups",
+      "database_id": "1597b538-7638-4c64-8d9a-44d850570e26"
+    }
+  ],
+  "ratelimits": [
+    {
+      "name": "BETA_RATE_LIMIT",
+      "namespace_id": "2026091401",
+      "simple": {
+        "limit": 60,
+        "period": 60
+      }
+    }
+  ],
+  "triggers": {
+    "crons": [
+      "*/15 * * * *"
+    ]
+  },
+  "routes": [
+    {
+      "pattern": "chiptechllc.com",
+      "custom_domain": true,
+      "zone_name": "chiptechllc.com"
+    },
+    {
+      "pattern": "www.chiptechllc.com",
+      "custom_domain": true,
+      "zone_name": "chiptechllc.com"
+    }
+  ],
+  "workers_dev": true
+}

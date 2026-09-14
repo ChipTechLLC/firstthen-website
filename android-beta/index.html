@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Help test First Then Board on Android. A short signup for parents and caregivers.">
+  <title>Join the Android beta | First Then Board</title>
+  <link rel="icon" href="/assets/favicon.png">
+  <link rel="stylesheet" href="/android-beta/beta.css">
+  <script src="/android-beta/beta.js" defer></script>
+</head>
+<body>
+  <header class="brand"><a href="/" aria-label="ChipTech LLC home"><img src="/assets/chiptech-logo.png" alt="ChipTech LLC" width="170"></a><span>Built for everyday moments.</span></header>
+  <main id="main">
+    <section class="intro" aria-labelledby="title">
+      <p class="eyebrow"><span class="dot"></span> FIRST THEN BOARD · ANDROID BETA</p>
+      <h1 id="title">A little structure.<br><em>A smoother day.</em></h1>
+      <p class="lede">Help us bring First Then Board to Android. Try visual schedules on your phone or tablet and tell us what works for your family.</p>
+      <div class="sample-board" aria-label="Example visual schedule: first brush teeth, then play">
+        <div class="sample-card first"><h2>FIRST</h2><div class="sample-picture" aria-hidden="true">🪥</div><p>Brush teeth</p></div>
+        <span class="connector" aria-hidden="true">→</span>
+        <div class="sample-card then"><h2>THEN</h2><div class="sample-picture" aria-hidden="true">🧸</div><p>Play</p></div>
+      </div>
+      <ul class="facts"><li>Android 8 or newer</li><li>Parents and caregivers, 18+</li><li>About a minute to sign up</li></ul>
+      <div class="expect"><h2>What testing involves</h2><p>Once the beta opens, install through Google Play, try the app during your usual routines, and share feedback. Please plan to keep the test installed and stay enrolled for at least 14 days.</p><p>Participation is voluntary. You can leave the test at any time.</p></div>
+    </section>
+    <section class="signup-card" aria-labelledby="signup-title">
+      <div id="signup-content">
+        <p class="eyebrow">HELP SHAPE THE ANDROID APP</p>
+        <h2 id="signup-title">Join the beta list</h2>
+        <p id="release-note">Sign up now. Installation details will be available when the closed beta opens.</p>
+        <p id="status" class="notice" role="status">Checking your invitation…</p>
+        <noscript><p class="notice">Please enable JavaScript to use this signup form, or contact <a href="mailto:support@chiptechllc.com">support@chiptechllc.com</a>.</p></noscript>
+        <form id="signup" hidden>
+          <div class="field"><label for="first-name">Your first name</label><input id="first-name" name="firstName" autocomplete="given-name" maxlength="60" required></div>
+          <div class="field"><label for="email">Google Play email address</label><input id="email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="none" spellcheck="false" maxlength="254" aria-describedby="email-help" required><p id="email-help" class="help">Use the Google account shown under your profile picture in the Play Store. It does not have to be a Gmail address.</p></div>
+          <fieldset><legend>What will you test on?</legend><div class="device-options"><label><input type="radio" name="deviceType" value="phone" required>Phone</label><label><input type="radio" name="deviceType" value="tablet">Tablet</label><label><input type="radio" name="deviceType" value="both">Both</label></div></fieldset>
+          <div class="field"><label for="device-model">Device model <span class="optional">(optional)</span></label><input id="device-model" name="deviceModel" maxlength="100" placeholder="For example, Samsung Galaxy or Lenovo tablet" aria-describedby="model-help"><p id="model-help" class="help">Knowing the model helps us test different devices.</p></div>
+          <div class="trap" aria-hidden="true"><label for="website">Leave this blank</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+          <label class="check"><input id="adult" name="adult" type="checkbox" required><span>I am 18 or older and am signing up for myself.</span></label>
+          <label class="check"><input id="consent" name="consent" type="checkbox" required><span>I agree to ChipTech LLC using these details to coordinate this beta and adding my Google Play email to its private tester group. <a href="/android-beta/privacy.html" target="_blank" rel="noopener">Beta signup privacy</a>.</span></label>
+          <div id="security-check"></div>
+          <p id="form-error" class="error" role="alert" hidden></p>
+          <button id="submit" type="submit" disabled>Join the beta list <span aria-hidden="true">→</span></button>
+          <p class="fine-print">Please do not include your child’s name or any medical information. No payment information is collected here.</p>
+        </form>
+      </div>
+      <div id="success" hidden tabindex="-1">
+        <div class="success-icon" aria-hidden="true">✓</div>
+        <h2>You’re on the list.</h2>
+        <p>Your signup has been received. We’ll use the email you provided to coordinate beta access.</p>
+        <div id="waiting"><h3>What happens next?</h3><p>We’re preparing access to the closed beta. Registration here does not enroll you in Google Play’s test yet. When access is ready, you’ll need to accept the Google Play testing invitation using the same account.</p></div>
+        <div id="ready" hidden><h3>Finish joining on Google Play</h3><p>Use the same Google account you entered here. Select <strong>Become a tester</strong>, then install the app. Group access may take a little time to update.</p><a id="play-link" class="button" target="_blank" rel="noopener noreferrer">Open Google Play invitation →</a></div>
+        <p class="help">Questions? <a href="mailto:support@chiptechllc.com">support@chiptechllc.com</a></p>
+      </div>
+    </section>
+  </main>
+  <footer><span>© 2026 ChipTech LLC</span><nav aria-label="Footer"><a href="/firstthenboard.html">About the app</a><a href="/android-beta/privacy.html">Signup privacy</a><a href="mailto:support@chiptechllc.com">Get help</a></nav></footer>
+</body>
+</html>
