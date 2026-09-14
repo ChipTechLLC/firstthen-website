@@ -18,7 +18,8 @@
     "BETA_OPEN": "false",
     "GOOGLE_GROUP_EMAIL": "beta@chiptechllc.com",
     "TURNSTILE_SITE_KEY": "0x4AAAAAAE0qeVQ7vHcF6ngF",
-    "BETA_ACCEPTING": "false"
+    "BETA_ACCEPTING": "true",
+    "GOOGLE_GROUP_RESOURCE": "groups/01mrcu09217igyx"
   },
   "observability": {
     "enabled": false

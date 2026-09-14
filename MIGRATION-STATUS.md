@@ -11,21 +11,23 @@ Updated September 14, 2026.
 - Google Workspace email DNS records were preserved. Netlify rollback records are documented in README.md.
 - D1 database and signup schema are deployed.
 - Turnstile widget is created for chiptechllc.com. Its secret is encrypted in the Worker; its public site key is in configuration.
-- Private Google group `beta@chiptechllc.com` (previous address retained as an alias) exists (Admin console ID `01mrcu09217igyx`). Members cannot see other members or group conversations. Administrators can add external members; ordinary users cannot.
+- Private Google group `beta@chiptechllc.com` (previous address retained as an alias) exists (Admin console ID `01mrcu09217igyx`). Members cannot see other members or group conversations. Owners and managers can manage membership and add external members; tester members cannot manage or view other members.
 - That group is saved in the Google Play Alpha closed testing track (`4698194921065361138`). Feedback address is support@chiptechllc.com. Google Play has no closed release yet, and the changes still require the applicable publishing/review flow.
 - Eleven local automated tests pass, including the Google JWT signature, narrow scope, duplicate enrollment, pending retry, invitation validation, request limits, Turnstile validation, consent, and closed-release gating.
 - Phone-width UI was tested at 390 pixels without horizontal overflow using a local fixture. Fixture signup reached the correct waiting-list confirmation. This did not enroll a real tester or validate live Google enrollment.
 - QR PNG/SVG and activation SQL were generated privately under ignored artifacts/community-01. The PNG was decoded and confirmed to match its invitation URL.
 
-## Remaining before distributing the QR code
+## Signup verification
 
-1. Google Cloud terms were accepted with authorization. Project `chiptech-beta-enrollment`, Cloud Identity API, and service account `beta-enrollment@chiptech-beta-enrollment.iam.gserviceaccount.com` are configured without billing or project roles.
-2. Service identity ownership of the tester group is authorized. Key creation is blocked by inherited `iam.disableServiceAccountKeyCreation`. A temporary policy-admin grant and project-only exception require separate user confirmation. No key was created. The adapter uses Cloud Identity without administrator impersonation.
-3. Store the Google credential as a Worker secret and configure group settings.
-4. Verify a real signup and Google group membership. Do not send invitations or messages to unrelated people as test data.
-5. Apply the invitation activation SQL and enable BETA_ACCEPTING only after verification.
-6. Keep BETA_OPEN=false until the closed release is available and eligibility settings are published.
+- The Google Cloud Identity API is enabled in `chiptech-beta-enrollment`. Its service account owns only `beta@chiptechllc.com`, without administrator impersonation or project roles.
+- `GOOGLE_SERVICE_ACCOUNT_JSON` is encrypted in Cloudflare. The group resource was resolved through the live Google API as `groups/01mrcu09217igyx`.
+- A real browser signup for the owner's account passed the production Turnstile check, saved consent and device selection in D1, and added that account to Google Groups on the first attempt. Membership was independently verified in Google Admin. No external tester account has been used for this verification.
+- The community-01 invitation is active and BETA_ACCEPTING=true. The printable letter-size flyer is in ignored output/pdf and its rendered QR code was decoded and matched against the invitation URL.
+- The temporary project exception for key creation was removed and the inherited restriction shows Enforced. The temporary Organization Policy Administrator role was removed after setup.
+- Eleven automated tests pass. Local DNS caching has cleared and ordinary HTTPS works.
 
-Local DNS caching has cleared. Ordinary HTTPS access to the apex and www succeeds.
+## Release still pending
 
-The signup is deliberately not accepting submissions yet. Neither automatic Google enrollment nor an installable closed beta has been verified live.
+BETA_OPEN remains false. Google Play closed testing must have an approved, available release before installation is possible. Signup adds eligibility automatically; testers must separately accept Google's testing invitation with the same account. Registration does not itself complete that opt-in. No automatic email notification service is configured.
+
+Enrollment failures are retried every 15 minutes, up to five attempts. Inspect pending records and last_error in D1 if a provider outage or account issue occurs. Routine successful registrations require no manual additions.
