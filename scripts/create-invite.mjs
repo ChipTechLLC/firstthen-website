@@ -1,0 +1,17 @@
+import { randomBytes, createHash } from 'node:crypto';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import QRCode from 'qrcode';
+const campaign=process.argv[2];
+if(!/^[a-z0-9-]{1,40}$/.test(campaign||'')) throw new Error('Supply a neutral campaign name, for example community-01. Do not use patient or clinic details.');
+const directory=resolve('artifacts',campaign);
+await mkdir(directory,{recursive:false});
+const token=randomBytes(32).toString('base64url');
+const hash=createHash('sha256').update(token).digest('hex');
+const expires=Date.now()+180*24*60*60*1000;
+const url=`https://chiptechllc.com/android-beta/#invite=${token}`;
+await writeFile(`${directory}/invitation.txt`,`${url}\nExpires: ${new Date(expires).toISOString()}\n`,{mode:0o600});
+await writeFile(`${directory}/activate.sql`,`INSERT INTO invitations(token_hash,campaign,expires_at,enabled) VALUES ('${hash}','${campaign}',${expires},1);\n`,{mode:0o600});
+await QRCode.toFile(`${directory}/signup-qr.png`,url,{width:1200,margin:4,errorCorrectionLevel:'M'});
+await QRCode.toFile(`${directory}/signup-qr.svg`,url,{margin:4,errorCorrectionLevel:'M'});
+console.log(`Invitation and QR files created in ${directory}. Apply activate.sql to D1 only when ready. The raw token is not in Git.`);
