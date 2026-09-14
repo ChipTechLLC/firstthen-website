@@ -21,5 +21,8 @@ test('membership uses a signed service-account JWT without admin impersonation',
  };
  await addGroupMember('tester@example.com',env,fetcher);await addGroupMember('tester@example.com',env,fetcher);
  assert.equal(tokenCalls,1);assert.equal(memberCalls,2);
+ await assert.rejects(addGroupMember('tester@example.com',env,async()=>Response.json({done:false})),/google_membership_pending/);
+ await assert.rejects(addGroupMember('tester@example.com',env,async()=>Response.json({done:true,error:{code:7}})),/google_membership_pending/);
+ await addGroupMember('tester@example.com',env,async()=>Response.json({done:true,response:{name:'groups/test-group/memberships/test'}}));
  await assert.rejects(addGroupMember('tester@example.com',env,async()=>new Response(null,{status:403})),/google_membership_403/);
 });
