@@ -19,8 +19,8 @@ Updated September 14, 2026.
 
 ## Remaining before distributing the QR code
 
-1. Complete the separate Google Cloud sign-in verification.
-2. Create the service identity and configure its group access. Prefer ownership limited to the tester group if supported by the chosen API. The current Directory adapter supports delegated group membership scope; no delegation or service-account credential has been granted yet.
+1. Google Cloud sign-in is complete. Its first-use terms acceptance is awaiting explicit user confirmation.
+2. Create the service identity and make it an owner only of the tester group. The adapter now uses the Google Cloud Identity API without administrator impersonation. No service-account credential or group access has been granted yet.
 3. Store the Google credential as a Worker secret and configure group settings.
 4. Verify a real signup and Google group membership. Do not send invitations or messages to unrelated people as test data.
 5. Apply the invitation activation SQL and enable BETA_ACCEPTING only after verification.

@@ -9,7 +9,7 @@ const good={invite,firstName:' Test ',email:' TEST@example.com ',deviceType:'tab
 async function setup(){
  const db=new DatabaseSync(':memory:');db.exec(readFileSync(new URL('../migrations/0001_beta.sql',import.meta.url),'utf8'));
  db.prepare('INSERT INTO invitations VALUES (?,?,?,1)').run(await hashToken(invite),'test',Date.now()+60000);
- const env={BETA_DB:{prepare(sql){return {bind(...args){const s=db.prepare(sql);return {run:async()=>s.run(...args),first:async()=>s.get(...args),all:async()=>({results:s.all(...args)})}}}}},BETA_ACCEPTING:'true',BETA_OPEN:'false',TURNSTILE_SECRET:'test',TURNSTILE_SITE_KEY:'test',BETA_RATE_LIMIT:{limit:async()=>({success:true})},GOOGLE_SERVICE_ACCOUNT_JSON:'{}',GOOGLE_ADMIN_EMAIL:'admin@example.com',GOOGLE_GROUP_EMAIL:'beta@example.com'};
+ const env={BETA_DB:{prepare(sql){return {bind(...args){const s=db.prepare(sql);return {run:async()=>s.run(...args),first:async()=>s.get(...args),all:async()=>({results:s.all(...args)})}}}}},BETA_ACCEPTING:'true',BETA_OPEN:'false',TURNSTILE_SECRET:'test',TURNSTILE_SITE_KEY:'test',BETA_RATE_LIMIT:{limit:async()=>({success:true})},GOOGLE_SERVICE_ACCOUNT_JSON:'{}',GOOGLE_GROUP_RESOURCE:'groups/test-group',GOOGLE_GROUP_EMAIL:'beta@example.com'};
  const deps={fetch:async()=>Response.json({success:true,hostname:'example.com',action:'beta_signup'}),addMember:async()=>{}};
  const send=(data=good,path='signup',headers={})=>handle(new Request('https://example.com/api/beta/'+path,{method:'POST',headers:{'Content-Type':'application/json',...headers},body:JSON.stringify(data)}),env,deps);
  return {db,env,deps,send};

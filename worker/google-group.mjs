@@ -1,20 +1,20 @@
 const TOKEN_URL = 'https://oauth2.googleapis.com/token';
-const SCOPE = 'https://www.googleapis.com/auth/admin.directory.group.member';
+const SCOPE = 'https://www.googleapis.com/auth/cloud-identity.groups';
 let cached;
 function base64url(bytes) {
   return btoa(String.fromCharCode(...bytes)).replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
 }
 const encode = value => base64url(new TextEncoder().encode(JSON.stringify(value)));
 export function groupConfigured(env) {
-  return Boolean(env.GOOGLE_SERVICE_ACCOUNT_JSON && env.GOOGLE_ADMIN_EMAIL && env.GOOGLE_GROUP_EMAIL);
+  return Boolean(env.GOOGLE_SERVICE_ACCOUNT_JSON && /^groups\/[a-zA-Z0-9_-]+$/.test(env.GOOGLE_GROUP_RESOURCE || ''));
 }
 async function accessToken(env, fetcher) {
   const account = JSON.parse(env.GOOGLE_SERVICE_ACCOUNT_JSON);
   const now = Math.floor(Date.now()/1000);
-  const identity = `${account.client_email}:${env.GOOGLE_ADMIN_EMAIL}`;
+  const identity = account.client_email;
   if (cached?.identity === identity && cached.expires > now + 60) return cached.token;
   const signingInput = `${encode({ alg:'RS256', typ:'JWT' })}.${encode({
-    iss:account.client_email, sub:env.GOOGLE_ADMIN_EMAIL, scope:SCOPE,
+    iss:account.client_email, scope:SCOPE,
     aud:TOKEN_URL, iat:now, exp:now + 3600,
   })}`;
   const der = Uint8Array.from(atob(account.private_key.replace(/-----[^-]+-----/g,'').replace(/\s/g,'')), c => c.charCodeAt(0));
@@ -31,11 +31,15 @@ async function accessToken(env, fetcher) {
   return data.access_token;
 }
 export async function addGroupMember(email, env, fetcher = fetch) {
+  if (!groupConfigured(env)) throw new Error('google_group_not_configured');
   const token = await accessToken(env, fetcher);
-  const response = await fetcher(`https://admin.googleapis.com/admin/directory/v1/groups/${encodeURIComponent(env.GOOGLE_GROUP_EMAIL)}/members`, {
+  const response = await fetcher(`https://cloudidentity.googleapis.com/v1/${env.GOOGLE_GROUP_RESOURCE}/memberships`, {
     method:'POST', signal:AbortSignal.timeout(10000),
     headers:{ Authorization:`Bearer ${token}`, 'Content-Type':'application/json' },
-    body:JSON.stringify({ email, role:'MEMBER', delivery_settings:'NONE' }),
+    body:JSON.stringify({ preferredMemberKey:{id:email}, roles:[{name:'MEMBER'}] }),
   });
-  if (!response.ok && response.status !== 409) throw new Error(`google_membership_${response.status}`);
+  if (response.status === 409) return;
+  if (!response.ok) throw new Error(`google_membership_${response.status}`);
+  const operation = await response.json();
+  if (operation.error || !operation.done) throw new Error('google_membership_pending');
 }

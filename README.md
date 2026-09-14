@@ -15,8 +15,8 @@ Only `dist/` is uploaded as public assets. Keep credentials out of Git.
 
 Signup remains disabled until `BETA_ACCEPTING` is set to `true` and the integrations are verified.
 Required secrets: `TURNSTILE_SECRET`, `GOOGLE_SERVICE_ACCOUNT_JSON`.
-Required configuration: `TURNSTILE_SITE_KEY`, `GOOGLE_ADMIN_EMAIL`, `GOOGLE_GROUP_EMAIL`.
-Google Workspace delegation needs only the Directory group member scope.
+Required configuration: `TURNSTILE_SITE_KEY`, `GOOGLE_GROUP_RESOURCE` (the Cloud Identity resource name).
+Google Cloud Identity uses a service account that owns only the tester group, with the cloud-identity.groups scope and no admin impersonation or domain-wide delegation.
 Use a private tester group and limit membership visibility to managers.
 
 Invitation tokens are hashed in D1 and provided in the URL fragment. Never commit invitation tokens or tester records.
