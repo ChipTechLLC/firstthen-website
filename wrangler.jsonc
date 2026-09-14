@@ -16,7 +16,7 @@
   },
   "vars": {
     "BETA_OPEN": "false",
-    "GOOGLE_GROUP_EMAIL": "",
+    "GOOGLE_GROUP_EMAIL": "beta@chiptechllc.com",
     "TURNSTILE_SITE_KEY": "0x4AAAAAAE0qeVQ7vHcF6ngF",
     "BETA_ACCEPTING": "false"
   },
