@@ -31,3 +31,7 @@ The old Netlify site remains available at `magenta-bonbon-076e06.netlify.app`.
 Previous web records were A `@` -> `75.2.60.5` and CNAME `www` -> `magenta-bonbon-076e06.netlify.app`, DNS only, automatic TTL.
 They were retained under `netlify-rollback` and `www-netlify-rollback` in Cloudflare DNS.
 To roll back, detach the two Worker custom domains and restore the previous web records. Preserve all email and verification records.
+
+Cloudflare Workers Builds is connected to `ChipTechLLC/firstthen-website`, production branch `main`.
+Its build command is `npm test && npm run build`, followed by `npx wrangler deploy`.
+Non-production branch builds are disabled to keep unreviewed changes away from production bindings.

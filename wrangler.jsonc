@@ -17,7 +17,7 @@
   "vars": {
     "BETA_OPEN": "false",
     "GOOGLE_GROUP_EMAIL": "",
-    "TURNSTILE_SITE_KEY": "",
+    "TURNSTILE_SITE_KEY": "0x4AAAAAAE0qeVQ7vHcF6ngF",
     "BETA_ACCEPTING": "false"
   },
   "observability": {
@@ -58,5 +58,6 @@
       "zone_name": "chiptechllc.com"
     }
   ],
-  "workers_dev": true
+  "workers_dev": true,
+  "preview_urls": false
 }
