@@ -19,7 +19,9 @@
     "GOOGLE_GROUP_EMAIL": "beta@chiptechllc.com",
     "TURNSTILE_SITE_KEY": "0x4AAAAAAE0qeVQ7vHcF6ngF",
     "BETA_ACCEPTING": "true",
-    "GOOGLE_GROUP_RESOURCE": "groups/01mrcu09217igyx"
+    "GOOGLE_GROUP_RESOURCE": "groups/01mrcu09217igyx",
+    "BETA_EMAIL_ENABLED": "true",
+    "BETA_EMAIL_FROM": "beta@notify.chiptechllc.com"
   },
   "observability": {
     "enabled": false
@@ -60,5 +62,13 @@
     }
   ],
   "workers_dev": true,
-  "preview_urls": false
+  "preview_urls": false,
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "allowed_sender_addresses": [
+        "beta@notify.chiptechllc.com"
+      ]
+    }
+  ]
 }

@@ -1,3 +1,4 @@
+import { processNotifications, mailConfigured } from './notifications.mjs';
 import { CONSENT_VERSION, HttpError, validateSignup, hashToken, readJSON } from './validation.mjs';
 import { addGroupMember, groupConfigured } from './google-group.mjs';
 const PLAY_URL = 'https://play.google.com/apps/testing/com.chiptechllc.firstthenboardandroid';
@@ -56,7 +57,7 @@ export async function handle(request, env, dependencies = {}) {
     const row = await env.BETA_DB.prepare('SELECT id,email,member_status,attempts FROM signups WHERE email=?').bind(signup.email).first();
     const status = await enroll(row,env,dependencies.addMember);
     const ready = status === 'added' && env.BETA_OPEN === 'true';
-    return json({ registered:true, ready, playUrl:ready ? PLAY_URL : null });
+    return json({ registered:true, ready, emailNotifications:mailConfigured(env), playUrl:ready ? PLAY_URL : null });
   } catch (error) {
     if (error instanceof HttpError) return json({ error:error.message },error.status);
     return json({ error:'We could not finish the signup. Please try again. Your details may already have been saved; retrying will not create a duplicate.' },503);
@@ -68,5 +69,6 @@ export default {
     if (!env.BETA_DB || !groupConfigured(env)) return;
     const rows = await env.BETA_DB.prepare("SELECT id,email,member_status,attempts FROM signups WHERE member_status='pending' AND attempts<5 ORDER BY created_at LIMIT 20").all();
     for (const row of rows.results) await enroll(row,env);
+    await processNotifications(env);
   },
 };

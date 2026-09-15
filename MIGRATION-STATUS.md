@@ -1,6 +1,6 @@
 # Cloudflare migration and Android beta signup
 
-Updated September 14, 2026.
+Updated September 15, 2026.
 
 ## Completed
 
@@ -13,7 +13,7 @@ Updated September 14, 2026.
 - Turnstile widget is created for chiptechllc.com. Its secret is encrypted in the Worker; its public site key is in configuration.
 - Private Google group `beta@chiptechllc.com` (previous address retained as an alias) exists (Admin console ID `01mrcu09217igyx`). Members cannot see other members or group conversations. Owners and managers can manage membership and add external members; tester members cannot manage or view other members.
 - That group is saved in the Google Play Alpha closed testing track (`4698194921065361138`). Feedback address is support@chiptechllc.com. Google Play has no closed release yet, and the changes still require the applicable publishing/review flow.
-- Eleven local automated tests pass, including the Google JWT signature, narrow scope, duplicate enrollment, pending retry, invitation validation, request limits, Turnstile validation, consent, and closed-release gating.
+- Seventeen local automated tests pass, including the Google JWT signature, narrow scope, duplicate enrollment, pending retry, invitation validation, request limits, Turnstile validation, consent, and closed-release gating.
 - Phone-width UI was tested at 390 pixels without horizontal overflow using a local fixture. Fixture signup reached the correct waiting-list confirmation. This did not enroll a real tester or validate live Google enrollment.
 - QR PNG/SVG and activation SQL were generated privately under ignored artifacts/community-01. The PNG was decoded and confirmed to match its invitation URL.
 
@@ -24,10 +24,14 @@ Updated September 14, 2026.
 - A real browser signup for the owner's account passed the production Turnstile check, saved consent and device selection in D1, and added that account to Google Groups on the first attempt. Membership was independently verified in Google Admin. No external tester account has been used for this verification.
 - The community-01 invitation is active and BETA_ACCEPTING=true. The printable letter-size flyer is in ignored output/pdf and its rendered QR code was decoded and matched against the invitation URL.
 - The temporary project exception for key creation was removed and the inherited restriction shows Enforced. The temporary Organization Policy Administrator role was removed after setup.
-- Eleven automated tests pass. Local DNS caching has cleared and ordinary HTTPS works.
+- Seventeen automated tests pass. Local DNS caching has cleared and ordinary HTTPS works.
 
 ## Release still pending
 
-BETA_OPEN remains false. Google Play closed testing must have an approved, available release before installation is possible. Signup adds eligibility automatically; testers must separately accept Google's testing invitation with the same account. Registration does not itself complete that opt-in. No automatic email notification service is configured.
+BETA_OPEN remains false. Google Play closed testing must have an approved, available release before installation is possible. Signup adds eligibility automatically; testers must separately accept Google's testing invitation with the same account. Registration does not itself complete that opt-in. Cloudflare automatic signup confirmations are enabled. Once an approved closed release is available, setting BETA_OPEN=true and deploying also starts the invitation email queue. Google Play publication is not automatically detected. See docs/BETA-EMAILS.md.
 
 Enrollment failures are retried every 15 minutes, up to five attempts. Inspect pending records and last_error in D1 if a provider outage or account issue occurs. Routine successful registrations require no manual additions.
+
+## Email verification
+
+Cloudflare sending is enabled for notify.chiptechllc.com with authenticated DNS and a sender-restricted Worker binding. Google Workspace MX records remain intact. Migration 0002 is applied. A scheduled-handler test against live Cloudflare resources sent one welcome email to the owner’s registered account and recorded a provider receipt. A repeated run did not send another welcome. Automated tests cover release gating, concurrent processing, rate-limit retries, ambiguous-send handling, and the daily sending cap. Delivery acceptance does not prove inbox placement.

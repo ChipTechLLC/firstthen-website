@@ -48,6 +48,8 @@ form.addEventListener('submit', async event => {
     if (!result.registered) throw new Error('Please try again.');
     document.querySelector('#signup-content').hidden = true;
     document.querySelector('#success').hidden = false;
+    document.querySelector('#email-confirmation').hidden = !result.emailNotifications;
+    if (result.ready) document.querySelector('#email-confirmation').textContent = 'We’ll also email these installation instructions, usually within 15 minutes. Check your spam folder if you don’t see them.';
     if (result.ready && result.playUrl === 'https://play.google.com/apps/testing/com.chiptechllc.firstthenboardandroid') {
       document.querySelector('#waiting').hidden = true;
       document.querySelector('#ready').hidden = false;
