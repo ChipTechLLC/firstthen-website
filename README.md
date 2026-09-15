@@ -25,12 +25,13 @@ The database prevents duplicate email records. Failed group enrollment remains p
 `BETA_OPEN` must remain `false` until Google Play has an installable closed release and the group is configured as eligible testers.
 Registration does not opt a tester into Google Play; the tester must accept the Google Play testing invitation separately.
 
-## Migration rollback
+## Hosting and Netlify retirement
 
-The old Netlify site remains available at `magenta-bonbon-076e06.netlify.app`.
-Previous web records were A `@` -> `75.2.60.5` and CNAME `www` -> `magenta-bonbon-076e06.netlify.app`, DNS only, automatic TTL.
-They were retained under `netlify-rollback` and `www-netlify-rollback` in Cloudflare DNS.
-To roll back, detach the two Worker custom domains and restore the previous web records. Preserve all email and verification records.
+Cloudflare hosts the website assets, signup Worker, D1 database, Turnstile protection, and beta notification sender. Cloudflare also manages chiptechllc.com registration and authoritative DNS. Source code remains in GitHub; ordinary email and tester-group membership remain in Google Workspace.
+
+The Netlify account was deleted on September 15, 2026 after verifying both production domains, all 26 published files, and the live Cloudflare bindings. The former Netlify site returns HTTP 404. Both Netlify rollback DNS records were removed. Do not restore the retired Netlify origin.
+
+For recovery, use Git history and Cloudflare Worker deployments. A verified Git bundle was saved locally under ignored artifacts/netlify-retirement before account closure.
 
 Cloudflare Workers Builds is connected to `ChipTechLLC/firstthen-website`, production branch `main`.
 Its build command is `npm test && npm run build`, followed by `npx wrangler deploy`.

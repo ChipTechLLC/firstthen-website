@@ -8,7 +8,7 @@ Updated September 15, 2026.
 - Both `chiptechllc.com` and `www.chiptechllc.com` are active custom domains with valid HTTPS responses.
 - Cloudflare Workers Builds is connected to this GitHub repository, restricted to this repository, with automatic deployments from `main`. A real Git-triggered build succeeded.
 - The existing public pages, styles, script, and app-ads.txt matched the deployed asset contents during verification.
-- Google Workspace email DNS records were preserved. Netlify rollback records are documented in README.md.
+- Google Workspace email DNS records were preserved. Netlify was retired after migration verification; see README.md.
 - D1 database and signup schema are deployed.
 - Turnstile widget is created for chiptechllc.com. Its secret is encrypted in the Worker; its public site key is in configuration.
 - Private Google group `beta@chiptechllc.com` (previous address retained as an alias) exists (Admin console ID `01mrcu09217igyx`). Members cannot see other members or group conversations. Owners and managers can manage membership and add external members; tester members cannot manage or view other members.
@@ -35,3 +35,11 @@ Enrollment failures are retried every 15 minutes, up to five attempts. Inspect p
 ## Email verification
 
 Cloudflare sending is enabled for notify.chiptechllc.com with authenticated DNS and a sender-restricted Worker binding. Google Workspace MX records remain intact. Migration 0002 is applied. A scheduled-handler test against live Cloudflare resources sent one welcome email to the owner’s registered account and recorded a provider receipt. A repeated run did not send another welcome. Automated tests cover release gating, concurrent processing, rate-limit retries, ambiguous-send handling, and the daily sending cap. Delivery acceptance does not prove inbox placement.
+
+## Netlify retirement, September 15, 2026
+
+Verified both custom domains are enabled on the production chiptech-website Worker. All 26 published asset files matched the local build byte for byte. Cloudflare API confirmed the live assets, D1, email and protection bindings. Public registry data identifies Cloudflare as the domain registrar, with Cloudflare authoritative nameservers. No runtime Netlify references were found in the website source.
+
+Netlify showed one project and one team, on the free plan with no saved card, invoices or receipts. Forms and Identity were not enabled. After explicit final approval, user deletion completed and returned the browser to login. The former Netlify site now returns 404, while both website domains and the beta page continue returning 200. Both obsolete Netlify rollback DNS records were removed. Google Workspace MX records were preserved.
+
+The Netlify GitHub App was uninstalled and its Netlify Auth OAuth authorization revoked. GitHub confirmed revocation and the installed-app list now contains only Cloudflare Workers and Pages.
