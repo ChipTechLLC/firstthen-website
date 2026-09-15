@@ -36,3 +36,15 @@ For recovery, use Git history and Cloudflare Worker deployments. A verified Git 
 Cloudflare Workers Builds is connected to `ChipTechLLC/firstthen-website`, production branch `main`.
 Its build command is `npm test && npm run build`, followed by `npx wrangler deploy`.
 Non-production branch builds are disabled to keep unreviewed changes away from production bindings.
+
+## Mobile studio redesign draft
+
+See [the rebrand notes](docs/MOBILE-STUDIO-REBRAND.md) for the proposed identity, recovery tag, and validation status. The draft is on `codex/mobile-studio-rebrand`.
+
+For local design review with the Worker, first run `npm run build`, then:
+
+```sh
+npx wrangler dev --local --port 8774 --var BETA_ACCEPTING:false --var BETA_EMAIL_ENABLED:false
+```
+
+The preview serves the website and intentionally disables beta submissions and notification emails. Production settings remain in the existing configuration.
