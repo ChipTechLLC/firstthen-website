@@ -1154,3 +1154,22 @@ a.platform-tag:hover { background: var(--gold); color: var(--navy-dark); }
   .board-card { width: 120px; padding: 1.25rem; }
   .board-card-icon { font-size: 2.25rem; }
 }
+
+/* Two-line Android beta invitation. */
+.android-beta-button {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .15rem;
+  text-align: center;
+  line-height: 1.5;
+}
+.android-beta-button small {
+  display: block;
+  font-size: .68rem;
+  font-weight: 500;
+  letter-spacing: .02em;
+  text-transform: none;
+}
+.product-platforms { align-items: center; }
