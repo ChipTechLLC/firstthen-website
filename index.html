@@ -1,230 +1,428 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChipTech LLC — Technology with Purpose</title>
-  <meta name="description" content="ChipTech LLC builds purposeful technology for real people. We create tools that make life simpler, more connected, and more meaningful." />
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link rel="apple-touch-icon" href="assets/favicon.png" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet" />
-</head>
-<body>
-
-  <!-- NAV -->
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="/" class="nav-brand">
-        <img src="assets/chiptech-logo.png" alt="ChipTech LLC" class="nav-logo" />
-      </a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li class="nav-dropdown">
-          <a href="#products" class="dropdown-toggle">Products <span class="chevron">&#9662;</span></a>
-          <ul class="dropdown-menu">
-            <li><a href="firstthenboard.html">
-              <span class="drop-title">First Then Board</span>
-              <span class="drop-sub">Visual communication app for ABA &amp; Speech</span>
-            </a></li>
-          </ul>
-        </li>
-        <li><a href="support.html">Support</a></li>
-        <li><a href="privacy.html">Privacy</a></li>
-        <li><a href="#contact" class="btn btn-sm">Contact</a></li>
-      </ul>
-      <button class="nav-toggle" aria-label="Toggle menu">&#9776;</button>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero hero-company">
-    <div class="hero-inner">
-      <p class="eyebrow">ChipTech LLC</p>
-      <h1>Technology <span class="gold">with Purpose.</span></h1>
-      <p class="hero-sub">We build tools that matter.</p>
-      <p class="hero-body">
-        ChipTech LLC is a technology company built on a simple belief: the best software solves real
-        problems for real people. Every product we build starts with a human story — and ends with a
-        tool that makes life a little easier.
-      </p>
-      <div class="hero-buttons">
-        <a href="#products" class="btn btn-primary">Our Products</a>
-        <a href="#about" class="btn btn-outline">Our Story</a>
-      </div>
-    </div>
-    <div class="hero-art">
-      <img src="assets/chiptech-icon.png" alt="ChipTech LLC emblem" class="hero-emblem" />
-    </div>
-  </section>
-
-  <!-- ABOUT / MISSION -->
-  <section class="about" id="about">
-    <div class="container">
-      <div class="about-inner">
-        <div class="about-text">
-          <p class="eyebrow">Who We Are</p>
-          <div class="gold-bar"></div>
-          <h2>Founded on Purpose</h2>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ChipTech | Thoughtful mobile apps for everyday life</title>
+    <meta
+      name="description"
+      content="ChipTech is an independent mobile app studio. Meet First Then Board, our visual schedule app for families, caregivers, and classrooms."
+    />
+    <meta name="theme-color" content="#04093C" />
+    <meta property="og:title" content="ChipTech | Good apps. For real life." />
+    <meta
+      property="og:description"
+      content="An independent mobile app studio building thoughtful tools for everyday life. Meet First Then Board."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://chiptechllc.com/" />
+    <meta
+      property="og:image"
+      content="https://chiptechllc.com/assets/brand/chiptech-social.png"
+    />
+    <link rel="canonical" href="https://chiptechllc.com/" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/assets/brand/chiptech-mark.svg"
+    />
+    <link rel="apple-touch-icon" href="/assets/brand/chiptech-touch.png" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/brand.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="/main.js" defer></script>
+  </head>
+  <body class="studio-home">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="nav">
+      <nav class="nav-inner" aria-label="Main navigation">
+        <a href="/" class="nav-brand" aria-label="ChipTech home"
+          ><img
+            src="/assets/brand/chiptech-wordmark.svg"
+            alt="ChipTech"
+            class="nav-logo"
+            width="288"
+            height="72"
+        /></a>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#products">Our apps</a></li>
+          <li><a href="#about">The studio</a></li>
+          <li><a href="/support.html">Support</a></li>
+          <li>
+            <a href="#contact" class="nav-contact"
+              >Say hello <span aria-hidden="true">↗</span></a
+            >
+          </li>
+        </ul>
+        <button
+          class="nav-toggle"
+          aria-label="Open navigation"
+          aria-controls="nav-links"
+          aria-expanded="false"
+        >
+          <span></span><span></span>
+        </button>
+      </nav>
+    </header>
+    <main id="main" tabindex="-1">
+      <section class="studio-hero" aria-labelledby="hero-title">
+        <div class="container hero-layout">
+          <div class="hero-copy">
+            <p class="eyebrow">
+              <span class="small-star" aria-hidden="true">✦</span> Independent
+              mobile app studio
+            </p>
+            <h1 id="hero-title">Good apps.<br /><em>For real life.</em></h1>
+            <p class="studio-lede">
+              We build thoughtful mobile apps that make everyday moments a
+              little easier.
+            </p>
+            <p class="hero-detail">
+              Real needs. Careful design. A clear purpose behind every app.
+            </p>
+            <div class="hero-actions">
+              <a href="#products" class="btn btn-primary"
+                >Meet our apps <span aria-hidden="true">↗</span></a
+              ><a href="#about" class="text-link"
+                >Our story <span aria-hidden="true">→</span></a
+              >
+            </div>
+            <div class="hero-footnote">
+              <span class="footnote-line"></span>
+              <p>Small studio. Personal by design.</p>
+            </div>
+          </div>
+          <div class="hero-showcase">
+            <div class="showcase-orbit" aria-hidden="true"></div>
+            <span class="showcase-star" aria-hidden="true">✦</span>
+            <div class="showcase-topline">
+              <span>MADE BY CHIPTECH</span><span>01 / FIRST THEN BOARD</span>
+            </div>
+            <figure class="hero-device">
+              <div class="device-crop">
+                <img
+                  src="/assets/screenshots/01_simple_first_then.png"
+                  alt="First Then Board on iPad showing a visual routine: first clean up, then playground."
+                  width="2048"
+                  height="2732"
+                  fetchpriority="high"
+                />
+              </div>
+            </figure>
+            <a class="showcase-caption" href="/firstthenboard.html"
+              ><span class="app-symbol" aria-hidden="true"><i></i><i></i></span
+              ><span
+                ><strong>First Then Board</strong
+                ><small>A clearer picture of what comes next.</small></span
+              ><span class="caption-arrow" aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
+        <div class="container hero-baseline">
+          <span>THOUGHTFULLY BUILT. EVERY DAY.</span
+          ><a href="#products"
+            >Explore what we’re making <span aria-hidden="true">↓</span></a
+          >
+        </div>
+      </section>
+      <section
+        class="apps-section light-section"
+        id="products"
+        aria-labelledby="apps-title"
+      >
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">01 / Our apps</p>
+              <h2 id="apps-title">
+                A little help.<br />A meaningful difference.
+              </h2>
+            </div>
+            <p>
+              Useful tools, inspired by the people<br class="desktop-break" />
+              and routines we know best.
+            </p>
+          </div>
+          <article class="featured-app">
+            <div class="app-story">
+              <p class="app-status">
+                <span aria-hidden="true"></span> Available on iOS
+              </p>
+              <h3>First Then Board<span class="heading-dot">.</span></h3>
+              <p class="app-category">Visual schedules for everyday routines</p>
+              <p>
+                Help your child see what happens first and what comes next. Use
+                familiar photos to make routines, transitions, and expectations
+                easier to understand.
+              </p>
+              <ul class="app-benefits">
+                <li>Your photos, their familiar world</li>
+                <li>Simple boards and multi-step routines</li>
+                <li>Made for families, caregivers, and classrooms</li>
+              </ul>
+              <a href="/firstthenboard.html" class="btn btn-navy"
+                >Explore First Then Board <span aria-hidden="true">↗</span></a
+              >
+              <div class="app-platform-links">
+                <a
+                  href="https://apps.apple.com/us/app/first-then-board/id6761027170"
+                  >Download for iOS <span aria-hidden="true">↗</span></a
+                ><a
+                  href="/android-beta/#invite=cyR87mz_YLRrintZG4nSMhQpAaRWF7I8vhJV3dxiu24"
+                  >Join the Android beta <span aria-hidden="true">→</span></a
+                >
+              </div>
+            </div>
+            <div class="app-visual">
+              <div class="visual-heading">
+                <span>A LITTLE STRUCTURE GOES A LONG WAY.</span
+                ><span aria-hidden="true">✦</span>
+              </div>
+              <div
+                class="routine-illustration"
+                aria-label="An illustrated example board: first brush teeth, then play."
+              >
+                <div class="routine-card">
+                  <div class="routine-label">FIRST <span>01</span></div>
+                  <div class="routine-picture">
+                    <svg viewBox="0 0 160 160" aria-hidden="true">
+                      <path
+                        d="M83 58v74"
+                        stroke="#04093C"
+                        stroke-width="16"
+                        stroke-linecap="round"
+                      />
+                      <rect
+                        x="73"
+                        y="21"
+                        width="29"
+                        height="53"
+                        rx="8"
+                        fill="#C9A227"
+                      />
+                      <path
+                        d="M78 29h17M78 39h17M78 49h17M78 59h17"
+                        stroke="#FFF"
+                        stroke-width="4"
+                        stroke-linecap="round"
+                      />
+                      <path
+                        d="M116 42l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"
+                        fill="#C9A227"
+                      />
+                    </svg>
+                  </div>
+                  <strong>Brush teeth</strong>
+                </div>
+                <span class="routine-arrow" aria-hidden="true">→</span>
+                <div class="routine-card">
+                  <div class="routine-label">THEN <span>02</span></div>
+                  <div class="routine-picture">
+                    <svg viewBox="0 0 160 160" aria-hidden="true">
+                      <rect
+                        x="33"
+                        y="77"
+                        width="47"
+                        height="47"
+                        rx="5"
+                        fill="#04093C"
+                      />
+                      <rect
+                        x="83"
+                        y="77"
+                        width="47"
+                        height="47"
+                        rx="5"
+                        fill="#C9A227"
+                      />
+                      <rect
+                        x="58"
+                        y="27"
+                        width="47"
+                        height="47"
+                        rx="5"
+                        fill="#C9A227"
+                      />
+                      <path
+                        d="M45 100h22M56 89v22"
+                        stroke="#FFF"
+                        stroke-width="5"
+                        stroke-linecap="round"
+                      />
+                      <circle
+                        cx="106"
+                        cy="100"
+                        r="10"
+                        stroke="#FFF"
+                        stroke-width="5"
+                        fill="none"
+                      />
+                      <path d="M72 51l8-10 8 10-8 10z" fill="#FFF" />
+                    </svg>
+                  </div>
+                  <strong>Play time</strong>
+                </div>
+              </div>
+              <p class="visual-note">One step at a time.</p>
+              <p class="illustration-note">
+                Illustrated example. See the app page for screenshots.
+              </p>
+            </div>
+          </article>
+          <div class="next-app">
+            <span class="next-star" aria-hidden="true">✦</span>
+            <div>
+              <h3>More ideas. The same care.</h3>
+              <p>
+                We’re building what comes next, with the same focus on everyday
+                usefulness.
+              </p>
+            </div>
+            <a href="#contact" class="text-link"
+              >Have something to share? <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
+      </section>
+      <section class="studio-section" id="about" aria-labelledby="studio-title">
+        <div class="container studio-story">
+          <div>
+            <p class="eyebrow">02 / The studio</p>
+            <h2 id="studio-title">It started with<br /><em>one family.</em></h2>
+            <div class="story-signature">
+              <img
+                src="/assets/brand/chiptech-mark.svg"
+                alt=""
+                width="52"
+                height="52"
+              /><span
+                >ChipTech LLC<small
+                  >Independent. Intentional. Personal.</small
+                ></span
+              >
+            </div>
+          </div>
+          <div class="studio-story-copy">
+            <p class="story-intro">
+              The best reason to build an app is knowing someone who needs it.
+            </p>
+            <p>
+              First Then Board began at home, as a way to support our daughter
+              through daily routines with clear visual steps. What started as a
+              personal project became our first app.
+            </p>
+            <p>
+              That experience shapes how we work at ChipTech. We’re a small
+              mobile app studio, building our own products around real needs and
+              paying attention to the details that make them easier to use.
+            </p>
+            <a href="/firstthenboard.html#story" class="text-link"
+              >The story behind First Then Board
+              <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
+        <div class="container principles">
+          <div>
+            <span>01</span>
+            <h3>Start with a real need.</h3>
+            <p>Build something useful for the people who will use it.</p>
+          </div>
+          <div>
+            <span>02</span>
+            <h3>Keep it understandable.</h3>
+            <p>Clear screens and thoughtful choices, from the first tap.</p>
+          </div>
+          <div>
+            <span>03</span>
+            <h3>Keep making it better.</h3>
+            <p>Listen to feedback and improve the things that matter.</p>
+          </div>
+        </div>
+      </section>
+      <section
+        class="hello-section"
+        id="contact"
+        aria-labelledby="contact-title"
+      >
+        <div class="container hello-inner">
+          <div>
+            <p class="eyebrow">03 / Say hello</p>
+            <h2 id="contact-title">
+              Good things start<br />with a conversation.
+            </h2>
+            <p>
+              A question about an app? An idea or a little feedback?<br />We’d
+              like to hear it.
+            </p>
+          </div>
+          <div class="hello-actions">
+            <a class="hello-email" href="mailto:support@chiptechllc.com"
+              >support@chiptechllc.com <span aria-hidden="true">↗</span></a
+            ><a href="/support.html" class="text-link"
+              >Looking for app support? <span aria-hidden="true">→</span></a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <a href="/" aria-label="ChipTech home"
+              ><img
+                src="/assets/brand/chiptech-wordmark.svg"
+                alt="ChipTech"
+                class="footer-logo"
+                width="288"
+                height="72"
+            /></a>
+            <p class="footer-tagline">Thoughtful apps. Everyday purpose.</p>
+          </div>
+          <div class="footer-links">
+            <p class="footer-heading">Our apps</p>
+            <ul>
+              <li><a href="/firstthenboard.html">First Then Board</a></li>
+              <li>
+                <a
+                  href="/android-beta/#invite=cyR87mz_YLRrintZG4nSMhQpAaRWF7I8vhJV3dxiu24"
+                  >Android beta</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <p class="footer-heading">The studio</p>
+            <ul>
+              <li><a href="#about">Our story</a></li>
+              <li><a href="/support.html">App support</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <p class="footer-heading">The details</p>
+            <ul>
+              <li><a href="/privacy.html">Privacy policy</a></li>
+              <li><a href="/tos.html">Terms of service</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
           <p>
-            ChipTech LLC was born out of a personal need — the kind that only a parent truly understands.
-            Our first product, <a href="firstthenboard.html">First Then Board</a>, was created to support
-            our daughter's communication journey through ABA therapy and speech. It grew into something
-            larger: proof that purposeful technology can make a real difference in people's lives.
+            © <span data-year>2026</span> ChipTech LLC. All rights reserved.
           </p>
           <p>
-            We're a small company with a big commitment — to build software that's simple, intentional,
-            and genuinely useful. For families. For professionals. For anyone who needs a tool that just works.
+            Built with purpose. Made for real life.
+            <span aria-hidden="true">✦</span>
           </p>
         </div>
-        <div class="about-values">
-          <div class="value-card">
-            <div class="value-icon">🎯</div>
-            <div class="value-body">
-              <h3>Purposeful</h3>
-              <p>Every feature we build solves a real problem. No bloat, no fluff.</p>
-            </div>
-          </div>
-          <div class="value-card">
-            <div class="value-icon">🤝</div>
-            <div class="value-body">
-              <h3>Human-First</h3>
-              <p>Our products are designed around real people and real situations — not assumptions.</p>
-            </div>
-          </div>
-          <div class="value-card">
-            <div class="value-icon">⚡</div>
-            <div class="value-body">
-              <h3>Simple by Design</h3>
-              <p>Complexity is easy. Simplicity takes intention. We choose intention every time.</p>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- PRODUCTS -->
-  <section class="products" id="products">
-    <div class="container">
-      <p class="eyebrow text-center">What We Build</p>
-      <div class="gold-bar centered"></div>
-      <h2 class="text-center">Our Products</h2>
-      <p class="section-sub text-center">Tools built from real experience, designed for real impact.</p>
-
-      <div class="product-grid">
-
-        <div class="product-card">
-          <div class="product-badge">Available Now</div>
-          <div class="mini-board">
-            <div class="mini-card mini-first">
-              <div class="mini-label">FIRST</div>
-              <div class="mini-emoji">🧹</div>
-            </div>
-            <div class="mini-arrow">→</div>
-            <div class="mini-card mini-then">
-              <div class="mini-label">THEN</div>
-              <div class="mini-emoji">🎮</div>
-            </div>
-          </div>
-          <h3>First Then Board</h3>
-          <p class="product-tagline">Visual Schedule App for Parents &amp; Caregivers</p>
-          <p class="product-desc">
-            Help your child understand what comes now — and what comes next — using their own photos and
-            visual supports. Built by a parent supporting his daughter with autism, designed for every
-            family, therapist, and classroom that benefits from visual structure.
-          </p>
-          <div class="product-platforms">
-            <a class="platform-tag" href="https://apps.apple.com/us/app/first-then-board/id6761027170" aria-label="Download First Then Board on the App Store">iOS</a>
-            <a class="platform-tag android-beta-button" href="https://chiptechllc.com/android-beta/#invite=cyR87mz_YLRrintZG4nSMhQpAaRWF7I8vhJV3dxiu24" aria-label="Join the First Then Board Android beta"><span>Android - In Beta</span><small>Click to join</small></a>
-          </div>
-          <a href="firstthenboard.html" class="btn btn-primary">Learn More</a>
-        </div>
-
-        <div class="product-card product-card-future">
-          <div class="product-badge badge-future">In Development</div>
-          <div class="product-icon">🚀</div>
-          <h3>More on the Way</h3>
-          <p class="product-tagline">The next ChipTech product</p>
-          <p class="product-desc">
-            We're always building. Our next product is in development — rooted in the same philosophy
-            that drives everything we make: solve a real problem, keep it simple, build it right.
-          </p>
-          <a href="#contact" class="btn btn-outline">Stay in Touch</a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="contact-section" id="contact">
-    <div class="container">
-      <div class="contact-inner">
-        <div class="contact-text">
-          <p class="eyebrow">Get in Touch</p>
-          <div class="gold-bar"></div>
-          <h2>Let's Talk</h2>
-          <p>
-            Whether you have a question about one of our products, want to collaborate, or just want
-            to share how our tools have made a difference — we'd love to hear from you.
-          </p>
-          <a href="mailto:support@chiptechllc.com" class="contact-email-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            support@chiptechllc.com
-          </a>
-        </div>
-        <div class="contact-links">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="firstthenboard.html">First Then Board →</a></li>
-            <li><a href="support.html">Support Center →</a></li>
-            <li><a href="privacy.html">Privacy Policy →</a></li>
-            <li><a href="tos.html">Terms of Service →</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <img src="assets/chiptech-logo.png" alt="ChipTech LLC" class="footer-logo" />
-          <p class="footer-tagline">Technology with purpose.</p>
-        </div>
-        <div class="footer-links">
-          <p class="footer-heading">Products</p>
-          <ul>
-            <li><a href="firstthenboard.html">First Then Board</a></li>
-          </ul>
-        </div>
-        <div class="footer-links">
-          <p class="footer-heading">Company</p>
-          <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="support.html">Support</a></li>
-            <li><a href="mailto:support@chiptechllc.com">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-links">
-          <p class="footer-heading">Legal</p>
-          <ul>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="tos.html">Terms of Service</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 ChipTech LLC. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="main.js"></script>
-</body>
+    </footer>
+  </body>
 </html>
