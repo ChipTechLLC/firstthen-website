@@ -9,6 +9,8 @@
     "html_handling": "none",
     "run_worker_first": [
       "/api/*",
+      "/privacy",
+      "/privacy/",
       "/",
       "/android-beta",
       "/android-beta/"

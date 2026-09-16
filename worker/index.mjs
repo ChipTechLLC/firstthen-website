@@ -23,6 +23,7 @@ export async function enroll(row, env, addMember = addGroupMember) {
 export async function handle(request, env, dependencies = {}) {
   const url = new URL(request.url);
   if (!url.pathname.startsWith('/api/')) {
+    if (url.pathname === '/privacy' || url.pathname === '/privacy/') return Response.redirect(new URL('/privacy.html', url), 301);
     if (url.pathname === '/') url.pathname = '/index.html';
     if (url.pathname === '/android-beta' || url.pathname === '/android-beta/') url.pathname = '/android-beta/index.html';
     return env.ASSETS.fetch(new Request(url, request));
