@@ -1,3 +1,4 @@
+import { processPremiumCodes } from './premium-codes.mjs';
 import { processNotifications, mailConfigured } from './notifications.mjs';
 import { CONSENT_VERSION, HttpError, validateSignup, hashToken, readJSON } from './validation.mjs';
 import { addGroupMember, groupConfigured } from './google-group.mjs';
@@ -71,5 +72,6 @@ export default {
     const rows = await env.BETA_DB.prepare("SELECT id,email,member_status,attempts FROM signups WHERE member_status='pending' AND attempts<5 ORDER BY created_at LIMIT 20").all();
     for (const row of rows.results) await enroll(row,env);
     await processNotifications(env);
+    await processPremiumCodes(env);
   },
 };
