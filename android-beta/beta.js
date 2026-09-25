@@ -17,7 +17,7 @@ async function initialize() {
   if (!invite) { status.textContent = 'Please scan the beta invitation QR code to open this signup form.'; return; }
   try {
     const config = await post('/api/beta/config',{invite});
-    if (config.betaOpen) document.querySelector('#release-note').textContent = 'The beta is open in the United States. Sign up, then accept the Google Play invitation to install.';
+    if (config.betaOpen) document.querySelector('#release-note').textContent = 'Sign up, then accept the Google Play invitation to install. International availability is expanding and may depend on Google Play review and rollout.';
     form.hidden = false;
     status.hidden = true;
     const script = document.createElement('script');
