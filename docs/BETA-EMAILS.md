@@ -1,5 +1,7 @@
 # Beta email workflow
 
+Retired October 25, 2026. This document is historical. The deployed website no longer imports these processors, has no email or database binding, and has an empty cron list. Do not follow the activation steps below. See README.md for the public-site behavior and retained private records.
+
 The existing 15-minute scheduled worker handles email after group enrollment retries.
 
 - With `BETA_EMAIL_ENABLED=true` and a verified Cloudflare `EMAIL` binding, existing and new registrants receive one signup confirmation while the beta is closed.

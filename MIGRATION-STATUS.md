@@ -1,5 +1,7 @@
 # Cloudflare migration and Android beta signup
 
+Historical migration record. As of October 25, 2026, the Android app is public and website enrollment and automated emails have been retired. Current deployment and redirect behavior are documented in README.md. The historical enabled/disabled flags below do not describe the live website.
+
 Updated September 15, 2026.
 
 ## Completed

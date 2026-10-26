@@ -1,38 +1,34 @@
 # ChipTech website
 
-Static ChipTech website and an invitation-only Android beta signup backend, hosted on Cloudflare Workers with static assets.
+Public ChipTech website, hosted on Cloudflare Workers with static assets. First Then Board is available from the App Store and Google Play.
 
 ## Development
 
 Use Node.js 22.13 or newer. Run `npm ci`, `npm test`, and `npm run build`.
 `npm run dev` starts Wrangler locally. `npm run deploy` deploys the site.
+Only `dist/` is uploaded as public assets. Keep credentials and private records out of Git.
 
 ## Production
 
 Worker: `chiptech-website`. Domains: `chiptechllc.com` and `www.chiptechllc.com`.
-D1 binding: `BETA_DB`. Apply schema with `npx wrangler d1 migrations apply chiptech-beta-signups --remote`.
-Only `dist/` is uploaded as public assets. Keep credentials out of Git.
+Cloudflare Workers Builds is connected to `ChipTechLLC/firstthen-website`, production branch `main`.
+Its build command is `npm test && npm run build`, followed by `npx wrangler deploy`.
+Non-production branch builds are disabled.
 
-Signup remains disabled until `BETA_ACCEPTING` is set to `true` and the integrations are verified.
-Required secrets: `TURNSTILE_SECRET`, `GOOGLE_SERVICE_ACCOUNT_JSON`.
-Required configuration: `TURNSTILE_SITE_KEY`, `GOOGLE_GROUP_RESOURCE` (the Cloud Identity resource name).
-Google Cloud Identity uses a service account that owns only the tester group, with the cloud-identity.groups scope and no admin impersonation or domain-wide delegation.
-Use a private tester group and limit membership visibility to managers.
+## Closed-test retirement, October 25, 2026
 
-Invitation tokens are hashed in D1 and provided in the URL fragment. Never commit invitation tokens or tester records.
-Turnstile must return the current hostname and the `beta_signup` action.
-The database prevents duplicate email records. Failed group enrollment remains pending and is retried every 15 minutes, up to five attempts.
-`BETA_OPEN` must remain `false` until Google Play has an installable closed release and the group is configured as eligible testers.
-Registration does not opt a tester into Google Play; the tester must accept the Google Play testing invitation separately.
+- Public buttons link directly to the stores. The former signup form and its browser assets are no longer published.
+- `/android-beta`, `/android-beta/`, and `/android-beta/index.html` redirect to the public Google Play listing. The redirect strips query parameters and explicitly clears any old invitation fragment.
+- Former signup/config API routes return HTTP 410 without reading input or accessing external services. Old signup privacy links redirect to the Past Website Registrations section of the current privacy policy.
+- The scheduled handler is a no-op and the cron list is empty. No automatic enrollment, invitation, reminder, or Premium-code emails are sent by the deployed Worker.
+- Database, email, and signup rate-limit bindings were removed from the website. This does not delete the private D1 database `chiptech-beta-signups` (`1597b538-7638-4c64-8d9a-44d850570e26`), its audit/code records, or existing Google Group members. Existing Premium entitlements are unaffected.
+- The old service modules, migrations, and email documentation are historical source references only. The public Worker does not import them. Do not redeploy an older enrollment Worker as a routine site rollback; it can restart enrollment and emails.
+- Past registrations remain private for outstanding support/access requests, subject to the updated privacy notice. No new announcement campaign was sent as part of this change.
 
 ## Hosting and Netlify retirement
 
-Cloudflare hosts the website assets, signup Worker, D1 database, Turnstile protection, and beta notification sender. Cloudflare also manages chiptechllc.com registration and authoritative DNS. Source code remains in GitHub; ordinary email and tester-group membership remain in Google Workspace.
+Cloudflare manages website hosting, domain registration, and authoritative DNS. Source code remains in GitHub; ordinary email remains in Google Workspace.
 
 The Netlify account was deleted on September 15, 2026 after verifying both production domains, all 26 published files, and the live Cloudflare bindings. The former Netlify site returns HTTP 404. Both Netlify rollback DNS records were removed. Do not restore the retired Netlify origin.
 
-For recovery, use Git history and Cloudflare Worker deployments. A verified Git bundle was saved locally under ignored artifacts/netlify-retirement before account closure.
-
-Cloudflare Workers Builds is connected to `ChipTechLLC/firstthen-website`, production branch `main`.
-Its build command is `npm test && npm run build`, followed by `npx wrangler deploy`.
-Non-production branch builds are disabled to keep unreviewed changes away from production bindings.
+For recovery, use Git history and Cloudflare Worker deployments with the closed-test retirement constraints above. A verified Git bundle was saved locally under ignored artifacts/netlify-retirement before Netlify account closure.

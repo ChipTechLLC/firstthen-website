@@ -1155,8 +1155,8 @@ a.platform-tag:hover { background: var(--gold); color: var(--navy-dark); }
   .board-card-icon { font-size: 2.25rem; }
 }
 
-/* Two-line Android beta invitation. */
-.android-beta-button {
+/* Two-line Android download button. */
+.android-download-button {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
@@ -1165,7 +1165,7 @@ a.platform-tag:hover { background: var(--gold); color: var(--navy-dark); }
   text-align: center;
   line-height: 1.5;
 }
-.android-beta-button small {
+.android-download-button small {
   display: block;
   font-size: .68rem;
   font-weight: 500;
